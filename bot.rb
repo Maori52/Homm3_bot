@@ -1,5 +1,5 @@
 require 'telegram/bot'
-require_relative 'Questions.rb'
+require_relative 'Quest_lib.rb'
 
 questions = Questions.new
 token = '464608221:AAFcyGq5uKdnQ6DJEnQMuIy4t-_vakX58MI'
@@ -57,10 +57,10 @@ Telegram::Bot::Client.run(token) do |bot|
               step = 0
               level = 0
               gamer_id = message.chat.id
-              bot.api.send_message(chat_id: gamer_id, text: "Heroes fo Might and Magic 3")
+              bot.api.send_message(chat_id: gamer_id, text: "Heroes of Might and Magic 3")
               #bot.api.sendLocation(chat_id: gamer_id, latitude: '56.306879', longitude:'44.081151')
               bot.api.sendPhoto(chat_id: gamer_id, photo: "https://s3-ap-southeast-1.amazonaws.com/maoriman1308/1.jpg")
-              bot.api.send_message(chat_id: gamer_id, text: "Готовы к кровавым сражениям и геройской славе?", reply_markup: lvl_0_markup)
+              bot.api.send_message(chat_id: gamer_id, text: , reply_markup: lvl_0_markup)
             end
           when 'Солмир_победил_эльфов1'
             bot.api.send_message(chat_id: gamer_id, text: "Вы победили эльфов - и захватили часть их армии\n")
@@ -148,25 +148,25 @@ Telegram::Bot::Client.run(token) do |bot|
             quest_review_bool = true
             bot.api.send_message(chat_id: admin_chat_id, text: "выполение задания подтверждено")
           when 'next_1'
-            case step
-              when 1
-                step += 1
-                bot.api.send_message(chat_id: gamer_id, text:"для начала тебе нужен артефакт дающий бесконечное количество ходов в день.\nОн очень редкий, заполучить ты его сможешь только у героя замка Inferno....",reply_markup: markup(['Далее','next_1']))
-              when 2
-                step += 1
-                bot.api.sendPhoto(chat_id: gamer_id, photo:"https://s3-ap-southeast-1.amazonaws.com/maoriman1308/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0+2018-01-30+%D0%B2+15.26.22.png")
-                bot.api.send_message(chat_id: gamer_id, text: "сына сатаны, наследника престола ада -  демона Вельзевула, властелина замка Inferno", reply_markup: lvl_1_next_button_markup)
-                # https://www.tz-nn.ru/
-              when 3
-                step += 1
-                bot.api.send_message(chat_id: gamer_id, text: "собирайся с духом и скачи на битву и помни - у тебя очень мало времени!")
-                bot.api.send_message(chat_id: gamer_id, text: "как прискочешь - нажимай \"Демон выходи!\"", reply_markup: lvl_1_step_3_markup )
-              when 4
-                step += 1
-                bot.api.send_message(chat_id: gamer_id, text: "Вы призвали огромное всепоглощающее исчадье ада...
-                Ваши маги от страха телепортировались, гремлины зарылись в сугробы а горгульи улетели
-                Вам ничего не остается как...", reply_markup: lvl_1_step_4_markup)
-            end
+            # case step
+            #   when 1
+            #     step += 1
+            #     bot.api.send_message(chat_id: gamer_id, text:"для начала тебе нужен артефакт дающий бесконечное количество ходов в день.\nОн очень редкий, заполучить ты его сможешь только у героя замка Inferno....",reply_markup: markup(['Далее','next_1']))
+            #   when 2
+            #     step += 1
+            #     bot.api.sendPhoto(chat_id: gamer_id, photo:"https://s3-ap-southeast-1.amazonaws.com/maoriman1308/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0+2018-01-30+%D0%B2+15.26.22.png")
+            #     bot.api.send_message(chat_id: gamer_id, text: "сына сатаны, наследника престола ада -  демона Вельзевула, властелина замка Inferno", reply_markup: lvl_1_next_button_markup)
+            #     # https://www.tz-nn.ru/
+            #   when 3
+            # #     step += 1
+            #     bot.api.send_message(chat_id: gamer_id, text: "собирайся с духом и скачи на битву и помни - у тебя очень мало времени!")
+            #     bot.api.send_message(chat_id: gamer_id, text: "как прискочешь - нажимай \"Демон выходи!\"", reply_markup: lvl_1_step_3_markup )
+            # #   when 4
+            #     step += 1
+            #     bot.api.send_message(chat_id: gamer_id, text: "Вы призвали огромное всепоглощающее исчадье ада...
+            #     Ваши маги от страха телепортировались, гремлины зарылись в сугробы а горгульи улетели
+            #     Вам ничего не остается как...", reply_markup: lvl_1_step_4_markup)
+            # end
           when 'lvl_1_step_5_ch1'
             step += 1
             bot.api.send_message(chat_id: gamer_id, text: "Вы все еще живы - а значит сделали правильный выбор ")
